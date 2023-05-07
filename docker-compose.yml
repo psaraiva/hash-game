@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: hash-game/8.1.18-fpm
+    container_name: hash-game
+    tty: true
+    environment:
+      COMPOSER_MEMORY_LIMIT: -1
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /hash-game
+    volumes:
+      - ./src:/hash-game
